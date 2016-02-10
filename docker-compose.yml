@@ -1,0 +1,28 @@
+web:
+  image: shin1x1/laravel-on-php7-apache
+  ports:
+    - "8000:80"
+  links:
+    - db_app
+    - db_app_test
+  volumes:
+    - .:/code
+    - php.ini:/usr/local/etc/php/conf.d/zzmyphp.ini
+  environment:
+    DB_HOST: db_app
+
+db_app:
+  image: postgres:9.5
+  environment:
+    POSTGRES_USER: vagrant
+    POSTGRES_PASSWORD: pass
+    POSTGRES_DB: app
+    LC_ALL: C
+
+db_app_test:
+  image: postgres:9.5
+  environment:
+    POSTGRES_USER: vagrant
+    POSTGRES_PASSWORD: pass
+    POSTGRES_DB: app_test
+    LC_ALL: C
