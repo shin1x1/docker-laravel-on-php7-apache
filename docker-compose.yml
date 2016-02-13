@@ -6,8 +6,7 @@ web:
     - db_app
     - db_app_test
   volumes:
-    - .:/code
-    - php.ini:/usr/local/etc/php/conf.d/zzmyphp.ini
+    - .:/var/www/html
   environment:
     DB_HOST: db_app
 
