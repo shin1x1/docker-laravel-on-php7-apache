@@ -20,6 +20,21 @@ RUN apt-get update && apt-get install -y \
       zip \
       opcache
 
+# Install Xdebug
+RUN curl -fsSL 'https://github.com/xdebug/xdebug/archive/XDEBUG_2_4_0RC4.tar.gz' -o xdebug.tar.gz \
+    && mkdir -p xdebug \
+    && tar -xf xdebug.tar.gz -C xdebug --strip-components=1 \
+    && rm xdebug.tar.gz \
+    && ( \
+    cd xdebug \
+    && phpize \
+    && ./configure --enable-xdebug \
+    && make -j$(nproc) \
+    && make install \
+    ) \
+    && rm -r xdebug \
+    && docker-php-ext-enable xdebug
+
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
 
