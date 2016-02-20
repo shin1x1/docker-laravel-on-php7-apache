@@ -7,6 +7,7 @@ web:
     - db_app_test
   volumes:
     - .:/var/www/html
+    - "./php.ini:/usr/local/etc/php/php.ini"
   environment:
     DB_HOST: db_app
 
