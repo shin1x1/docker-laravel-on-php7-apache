@@ -35,3 +35,20 @@ $ docker-compose run web php artisan db:seed
 # PHPUnit
 $ docker-compose run web ./vendor/bin/phpunit
 ```
+
+If you would like to modify PHP settings via `php.ini`. This file configured for Xdebug remote debug and some example settings.
+
+```
+; timezone
+;date.timezone = Asia/Tokyo
+
+; error reporing
+;log_errors = On
+;error_log = /var/log/php.log
+
+; xdebug
+xdebug.remote_enable = On
+xdebug.remote_autostart= On
+xdebug.remote_connect_back = On
+;xdebug.remote_host = 192.168.99.1
+```
