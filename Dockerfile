@@ -21,7 +21,7 @@ RUN apt-get update && apt-get install -y \
       opcache
 
 # Install Xdebug
-RUN curl -fsSL 'https://github.com/xdebug/xdebug/archive/XDEBUG_2_4_0RC4.tar.gz' -o xdebug.tar.gz \
+RUN curl -fsSL 'https://xdebug.org/files/xdebug-2.4.0.tgz' -o xdebug.tar.gz \
     && mkdir -p xdebug \
     && tar -xf xdebug.tar.gz -C xdebug --strip-components=1 \
     && rm xdebug.tar.gz \
